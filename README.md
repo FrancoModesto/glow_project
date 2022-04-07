@@ -1,11 +1,10 @@
-# *REPOSITORIO Glow Project por Franco Modesto*
+# *GLOW PROJECT por Franco Modesto*
 
 ## Contexto: 
 El player es un pelota/bola/esfera que rebota por el escenario, resolviendo puzzles y enfrentando (o esquivando) enemigos para llegar a una meta y así seguir avanzando.
 
 ## Objetivo: 
 El objetivo principal del juego es entretenerse un rato, divirtiéndose con la ambientación, la complejidad de los niveles y los sonidos del juego.
-
 
 ## Controles (sin Burbuja): 	
 * Movimiento (Mantener "W"/"A"/"S"/"D")
@@ -26,7 +25,6 @@ El objetivo principal del juego es entretenerse un rato, divirtiéndose con la a
 * Vista Panorámica (Mantener "Tab")
 * Recargar Nivel (Apretar "R")
 * Menú de Pausa (Apretar "ESC")
-
 
 ## Aclaraciones de Mecánicas: 
 * El "Shift" y la "Caída", tendrán mayor efecto mientras mayor sea la velocidad de movimiento del player al momento de ejecutar estos comandos.
