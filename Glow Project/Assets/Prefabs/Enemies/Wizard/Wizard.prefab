@@ -644,6 +644,7 @@ MonoBehaviour:
   shootCooldown: 2
   speedToLook: 1
   shootSound: {fileID: 8300000, guid: 58bd885b7fbf7674c807b5efdab935ae, type: 3}
+  wizardBulletHitPrefab: {fileID: 100000, guid: 979632a27455af442bd2d8f36eb0ffce, type: 3}
   bulletPrefab: {fileID: 2202068367740095580, guid: 9659e8fde4bc04445a9e00b154c69cf4, type: 3}
   bulletAcumulator: {fileID: 0}
   shootpoint: {fileID: 1969871262108415325}
@@ -662,6 +663,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unknockTime: 5
+  wizardHitPrefab: {fileID: 100004, guid: f95ff734540a0d749be6571b6cb5b37f, type: 3}
   knockedSound: {fileID: 8300000, guid: b06d7312860e5a643b870ff651cdce07, type: 3}
   dieSound: {fileID: 8300000, guid: 00f07297707ea9e4f83647b510cf7b56, type: 3}
   wizardBody: {fileID: 1335278543749856}

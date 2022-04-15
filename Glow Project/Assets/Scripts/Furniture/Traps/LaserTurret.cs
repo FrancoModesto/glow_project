@@ -10,6 +10,7 @@ public class LaserTurret : MonoBehaviour
 
     //RUNTIME
     [SerializeField] private GameObject shootpoint;
+    [SerializeField] private GameObject laserKillPrefab;
     [SerializeField] private GameObject batExplosionPrefab;
     [SerializeField] private AudioClip laserKillSound;
     [SerializeField] private AudioClip batExplosionSound;
@@ -92,6 +93,7 @@ public class LaserTurret : MonoBehaviour
 
     private void KillPlayer(){
         canKill = false;
+        Instantiate(laserKillPrefab, new Vector3(player.transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
         player.GetComponent<PlayerMovement>().GetPMaudioPlayerExtra().Stop();
         player.GetComponent<PlayerCollision>().SetPCisDeadByLaser(true);
         player.GetComponent<PlayerCollision>().SetPCisDead(true);

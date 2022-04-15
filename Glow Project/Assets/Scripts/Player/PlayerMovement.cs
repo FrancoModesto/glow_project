@@ -34,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
     private bool canPress = true;
     private float seVol = 1f;
     private GameObject UI;
+    [SerializeField] private GameObject shiftVFXPrefab;
+    [SerializeField] private GameObject shiftVFXPrefabSmall;
 
     //GETTER Y SETTER
     public PlayerData GetPMplayerData(){
@@ -215,27 +217,32 @@ public class PlayerMovement : MonoBehaviour
             }
             if(Input.GetKeyDown(KeyCode.LeftShift) && canShift && !GetComponent<PlayerCollision>().GetPCwin()){
                 if(Input.GetKey(KeyCode.W)){
+                    Instantiate(shiftVFXPrefab, transform.position, Quaternion.identity);
                     UI.GetComponent<UIManager>().GetUIMshiftPanel().SetActive(false);
                     UI.GetComponent<UIManager>().GetUIMshiftPanelCooldown().SetActive(true);
                     Shift(Vector3.right);
                 }
                 if(Input.GetKey(KeyCode.A)){
+                    Instantiate(shiftVFXPrefab, transform.position, Quaternion.identity);
                     UI.GetComponent<UIManager>().GetUIMshiftPanel().SetActive(false);
                     UI.GetComponent<UIManager>().GetUIMshiftPanelCooldown().SetActive(true);
                     Shift(Vector3.forward);
                 }
                 if(Input.GetKey(KeyCode.S)){
+                    Instantiate(shiftVFXPrefab, transform.position, Quaternion.identity);
                     UI.GetComponent<UIManager>().GetUIMshiftPanel().SetActive(false);
                     UI.GetComponent<UIManager>().GetUIMshiftPanelCooldown().SetActive(true);
                     Shift(Vector3.left);
                 }
                 if(Input.GetKey(KeyCode.D)){
+                    Instantiate(shiftVFXPrefab, transform.position, Quaternion.identity);
                     UI.GetComponent<UIManager>().GetUIMshiftPanel().SetActive(false);
                     UI.GetComponent<UIManager>().GetUIMshiftPanelCooldown().SetActive(true);
                     Shift(Vector3.back);
                 }
             }
             if(Input.GetKeyDown(KeyCode.LeftControl) && canFall && !GetComponent<PlayerCollision>().GetPCwin()){
+                Instantiate(shiftVFXPrefab, transform.position, Quaternion.identity);
                 UI.GetComponent<UIManager>().GetUIMfallPanel().SetActive(false);
                 UI.GetComponent<UIManager>().GetUIMfallPanelCooldown().SetActive(true);
                 Fall();
@@ -298,6 +305,7 @@ public class PlayerMovement : MonoBehaviour
         skinBright.SetActive(false);
         skin.SetActive(true);
         if(canJump){
+            Instantiate(shiftVFXPrefabSmall, transform.position, Quaternion.identity);
             rbPlayer.AddForce(Vector3.up * playerData.GetPDjumpPower() * jumpForce, ForceMode.Impulse);
             audioPlayer.PlayOneShot(jumpSound, 0.4f * seVol);
             Invoke("LittleCooldownToFalseJump", 0.05f);

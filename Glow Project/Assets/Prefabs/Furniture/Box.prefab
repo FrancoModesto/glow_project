@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 5638273588018819522}
   - component: {fileID: 6978928062333479018}
   - component: {fileID: 5807838020988177617}
+  - component: {fileID: 1708127589011303319}
   m_Layer: 0
   m_Name: Box
   m_TagString: Ground
@@ -143,3 +144,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &1708127589011303319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6227572165178931415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6aebb36d578c69439f982f9e4a89d56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skin: {fileID: 2891451153139629898}
+  lavaSplashPrefab: {fileID: 1687118924408352, guid: 77c69ec12208c4c4380d15e30b6f8f68, type: 3}
+  lavaSplashSound: {fileID: 8300000, guid: d7947ccab799da646b668114ab77aedd, type: 3}

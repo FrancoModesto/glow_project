@@ -16,10 +16,12 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField] private GameObject ppGlobal;
     [SerializeField] private GameObject ppGlobalDeath;
     [SerializeField] private GameObject vCam2;
+    [SerializeField] private AudioClip itemPickSound;
     [SerializeField] private AudioClip collisionSound;
     [SerializeField] private AudioClip collisionArmorSound;
     [SerializeField] private AudioClip collisionBubbleSound;
     [SerializeField] private AudioClip killedSound;
+    [SerializeField] private AudioClip lavaSplashSound;
     [SerializeField] private AudioClip batExplosionSound;
     [SerializeField] private AudioClip wizardBulletKillSound;
     [SerializeField] private AudioClip winSound;
@@ -42,7 +44,12 @@ public class PlayerCollision : MonoBehaviour
     private float seVol = 1f;
     private bool hasArmor = false;
     private bool hasBubble = false;
+    [SerializeField] private GameObject itemPickPrefab;
+    [SerializeField] private GameObject armorBreakPrefab;
+    [SerializeField] private GameObject bubbleBreakPrefab;
+    [SerializeField] private GameObject lavaSplashPrefab;
     [SerializeField] private GameObject batExplosionPrefab;
+    [SerializeField] private GameObject wizardBulletHitPrefab;
     private GameObject UI;
 
     //EVENTS
@@ -161,6 +168,7 @@ public class PlayerCollision : MonoBehaviour
             ppGlobal.SetActive(false);
             ppGlobalDeath.SetActive(true);
             Time.timeScale = 0.5f;
+            Instantiate(lavaSplashPrefab, new Vector3(transform.position.x, other.gameObject.transform.position.y + 1.2f, transform.position.z), lavaSplashPrefab.transform.localRotation);            audioPlayer.PlayOneShot(lavaSplashSound, 1f * seVol);
             audioPlayer.PlayOneShot(killedSound, 0.5f * seVol);
             gameObject.GetComponent<PlayerMovement>().enabled = false;
             gameObject.GetComponent<PlayerMovement>().SetPMrbPlayerVelocity(Vector3.zero);
@@ -233,7 +241,9 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other){
         if(other.gameObject.CompareTag("Armor Item") && !hasArmor && !hasBubble){
+            Instantiate(itemPickPrefab, new Vector3(other.gameObject.transform.position.x, other.gameObject.transform.position.y - 0.5f, other.gameObject.transform.position.z), itemPickPrefab.transform.localRotation);
             Destroy(other.gameObject);
+            audioPlayer.PlayOneShot(itemPickSound, 1f * seVol);
             audioPlayer.PlayOneShot(pickArmorSound, 1f * seVol);
             skinArmor.SetActive(true);
             OnArmorPickOrBreak?.Invoke();
@@ -242,7 +252,9 @@ public class PlayerCollision : MonoBehaviour
             Invoke("RemoveArmor", playerData.GetPDarmorDuration());
         }
         if(other.gameObject.CompareTag("Bubble Item") && !hasArmor && !hasBubble){
+            Instantiate(itemPickPrefab, new Vector3(other.gameObject.transform.position.x, other.gameObject.transform.position.y - 0.5f, other.gameObject.transform.position.z), itemPickPrefab.transform.localRotation);
             Destroy(other.gameObject);
+            audioPlayer.PlayOneShot(itemPickSound, 1f * seVol);
             audioPlayer.PlayOneShot(pickBubbleSound, 12f * seVol);
             gameObject.GetComponent<PlayerMovement>().SetPMtimePassJ(0f);
             audioPlayerExtra.Stop();
@@ -258,6 +270,7 @@ public class PlayerCollision : MonoBehaviour
         }
         if(other.gameObject.CompareTag("WBullet")){
             if(hasArmor){
+                Instantiate(wizardBulletHitPrefab, new Vector3(transform.position.x - 1.5f, transform.position.y + 1, transform.position.z), Quaternion.identity);
                 audioPlayer.PlayOneShot(blockArmorSound, 1f * seVol);
             }else{
                 GetComponent<PlayerMovement>().GetPMaudioPlayerExtra().Stop();
@@ -269,6 +282,7 @@ public class PlayerCollision : MonoBehaviour
                 ppGlobal.SetActive(false);
                 ppGlobalDeath.SetActive(true);
                 Time.timeScale = 0.5f;
+                Instantiate(wizardBulletHitPrefab, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.identity);
                 audioPlayer.PlayOneShot(wizardBulletKillSound, 0.8f * seVol);
                 audioPlayer.PlayOneShot(killedSound, 0.5f * seVol);
                 gameObject.GetComponent<PlayerMovement>().enabled = false;
@@ -304,6 +318,7 @@ public class PlayerCollision : MonoBehaviour
         }
         hasArmor = false;
         skinArmor.SetActive(false);
+        Instantiate(armorBreakPrefab, transform.position, Quaternion.identity);
         OnArmorPickOrBreak?.Invoke();
         UI.GetComponent<UIManager>().SetUIMtimePassA(playerData.GetPDarmorDuration());
     }
@@ -324,6 +339,7 @@ public class PlayerCollision : MonoBehaviour
         }
         hasBubble = false;
         skinBubble.SetActive(false);
+        Instantiate(bubbleBreakPrefab, transform.position, Quaternion.identity);
         OnBubbleBreak?.Invoke();
         UI.GetComponent<UIManager>().SetUIMtimePassB(playerData.GetPDbubbleDuration());
     }

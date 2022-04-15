@@ -304,6 +304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonArray: []
   shootpoint: {fileID: 3951937490163178367}
+  laserKillPrefab: {fileID: 100000, guid: 77ec3c4e07a36814fb3169ecef41b50a, type: 3}
   batExplosionPrefab: {fileID: 3647486945243506347, guid: 1e679729b92e8014d8d746cb23bfd217, type: 3}
   laserKillSound: {fileID: 8300000, guid: c73f6561a9cb8274ba641c4704b4d907, type: 3}
   batExplosionSound: {fileID: 8300000, guid: f48737d43a34a1f4e871dfac93c75222, type: 3}
