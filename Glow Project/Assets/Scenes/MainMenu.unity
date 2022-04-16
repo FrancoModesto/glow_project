@@ -153,6 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actualLvl: 0
+  lvlKilledSlimes: 0
+  globalKilledSlimes: 0
   musicVol: 0
   seVol: 0
 --- !u!4 &11421811

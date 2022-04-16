@@ -11,6 +11,8 @@ TagManager:
   - Bat
   - Bubble Item
   - Metallic
+  - FxTemporaire
+  - Slime
   layers:
   - Default
   - TransparentFX

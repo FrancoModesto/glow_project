@@ -159,6 +159,7 @@ public class PlayerCollision : MonoBehaviour
             GetComponent<PlayerMovement>().SetPMcanJump(true);
         }
         if(other.gameObject.CompareTag("Kill")){
+            GameManager.instance.lvlKilledSlimes = 0;
             GetComponent<PlayerMovement>().GetPMaudioPlayerExtra().Stop();
             OnDeath?.Invoke();
             isDead = true;
@@ -168,7 +169,8 @@ public class PlayerCollision : MonoBehaviour
             ppGlobal.SetActive(false);
             ppGlobalDeath.SetActive(true);
             Time.timeScale = 0.5f;
-            Instantiate(lavaSplashPrefab, new Vector3(transform.position.x, other.gameObject.transform.position.y + 1.2f, transform.position.z), lavaSplashPrefab.transform.localRotation);            audioPlayer.PlayOneShot(lavaSplashSound, 1f * seVol);
+            Instantiate(lavaSplashPrefab, new Vector3(transform.position.x, other.gameObject.transform.position.y + 1.2f, transform.position.z), lavaSplashPrefab.transform.localRotation);            
+            audioPlayer.PlayOneShot(lavaSplashSound, 1f * seVol);
             audioPlayer.PlayOneShot(killedSound, 0.5f * seVol);
             gameObject.GetComponent<PlayerMovement>().enabled = false;
             gameObject.GetComponent<PlayerMovement>().SetPMrbPlayerVelocity(Vector3.zero);
@@ -188,6 +190,7 @@ public class PlayerCollision : MonoBehaviour
                 Instantiate(batExplosionPrefab, other.gameObject.transform.position, Quaternion.identity);
                 Destroy(other.gameObject);
             } else{
+                GameManager.instance.lvlKilledSlimes = 0;
                 GetComponent<PlayerMovement>().GetPMaudioPlayerExtra().Stop();
                 OnDeath?.Invoke();
                 isDead = true;
@@ -214,6 +217,9 @@ public class PlayerCollision : MonoBehaviour
             }
         }
         if(other.gameObject.name == "WinningPlatform" && missionOk){
+            GameManager.instance.globalKilledSlimes += GameManager.instance.lvlKilledSlimes;
+            GameManager.instance.lvlKilledSlimes = 0;
+            GameManager.SaveGlobalKilledSlimes(GameManager.instance.globalKilledSlimes);
             GetComponent<PlayerMovement>().GetPMaudioPlayerExtra().Stop();
             OnDeath?.Invoke();
             win = true;
@@ -273,6 +279,7 @@ public class PlayerCollision : MonoBehaviour
                 Instantiate(wizardBulletHitPrefab, new Vector3(transform.position.x - 1.5f, transform.position.y + 1, transform.position.z), Quaternion.identity);
                 audioPlayer.PlayOneShot(blockArmorSound, 1f * seVol);
             }else{
+                GameManager.instance.lvlKilledSlimes = 0;
                 GetComponent<PlayerMovement>().GetPMaudioPlayerExtra().Stop();
                 OnDeath?.Invoke();
                 isDead = true;

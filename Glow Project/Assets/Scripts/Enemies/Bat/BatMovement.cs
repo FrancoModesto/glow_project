@@ -27,6 +27,7 @@ public class BatMovement : MonoBehaviour
 
         ccBat = GetComponent<CharacterController>();
         player = GameObject.Find("Player");
+        
         originalPos = transform.position;
         originalRot = transform.rotation;
 

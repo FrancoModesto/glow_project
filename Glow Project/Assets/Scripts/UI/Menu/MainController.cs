@@ -50,6 +50,7 @@ public class MainController : MonoBehaviour
         audioMenu.PlayOneShot(menuButtonClickSound, 1f * GameManager.instance.seVol);
         SceneManager.LoadScene(2);
         GameManager.SaveActualLvl(2);
+        GameManager.SaveGlobalKilledSlimes(0);
     }
 
     public void Continue(){

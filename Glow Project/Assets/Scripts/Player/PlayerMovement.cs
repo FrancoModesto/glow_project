@@ -248,6 +248,7 @@ public class PlayerMovement : MonoBehaviour
                 Fall();
             }
             if(Input.GetKeyDown(KeyCode.R)){
+                GameManager.instance.lvlKilledSlimes = 0;
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
