@@ -78,14 +78,16 @@ public class LaserTurret : MonoBehaviour
             }
             if(hit.transform.gameObject.CompareTag("Player") && canKill){
                 if(!player.GetComponent<PlayerCollision>().GetPChasArmor()){
-                    GameManager.instance.lvlKilledSlimes = 0;
+                    if(GameManager.instance != null){
+                        GameManager.instance.lvlKilledSlimes = 0;
+                    }
                     KillPlayer();
                 }
             }
             if(hit.transform.gameObject.CompareTag("Bat") && canKillBat){
                 canKillBat = false;
                 batHit = hit;
-                player.GetComponent<PlayerCollision>().GetPCaudioPlayer().PlayOneShot(laserKillSound, 5f * seVol);
+                player.GetComponent<PlayerCollision>().GetPCaudioPlayer().PlayOneShot(laserKillSound, 2f * seVol);
                 player.GetComponent<PlayerCollision>().GetPCaudioPlayer().PlayOneShot(batExplosionSound, 1.5f * seVol);
                 Instantiate(batExplosionPrefab, hit.transform.gameObject.transform.position, Quaternion.identity);
                 Instantiate(laserKillPrefab, new Vector3(hit.transform.gameObject.transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
@@ -95,11 +97,13 @@ public class LaserTurret : MonoBehaviour
                 Invoke("DelayedBatDestroy", 0.2f);
             }
             if(hit.transform.gameObject.CompareTag("Slime") && canKillSlime){
-                GameManager.instance.lvlKilledSlimes++;
+                if(GameManager.instance != null){
+                    GameManager.instance.lvlKilledSlimes++;
+                }
                 canKillSlime = false;
                 slimeHit = hit;
-                player.GetComponent<PlayerCollision>().GetPCaudioPlayer().PlayOneShot(laserKillSound, 5f * seVol);
-                player.GetComponent<PlayerCollision>().GetPCaudioPlayer().PlayOneShot(slimeDieSound, 3f * seVol);
+                player.GetComponent<PlayerCollision>().GetPCaudioPlayer().PlayOneShot(laserKillSound, 2f * seVol);
+                player.GetComponent<PlayerCollision>().GetPCaudioPlayer().PlayOneShot(slimeDieSound, 2f * seVol);
                 Instantiate(slimeBloodPrefab, new Vector3(hit.transform.gameObject.transform.position.x, hit.transform.gameObject.transform.position.y + 0.5f, hit.transform.gameObject.transform.position.z), slimeBloodPrefab.transform.localRotation);
                 Instantiate(laserKillPrefab, new Vector3(hit.transform.gameObject.transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
                 hit.transform.gameObject.GetComponent<SlimeMovement>().enabled = false;

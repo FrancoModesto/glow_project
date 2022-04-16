@@ -43,13 +43,15 @@ public class SlimeCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision other){
         if(other.gameObject.CompareTag("Player")){
-            GameManager.instance.lvlKilledSlimes++;
+            if(GameManager.instance != null){
+                GameManager.instance.lvlKilledSlimes++;
+            }
             isDead = true;
             Instantiate(slimeBloodPrefab, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), slimeBloodPrefab.transform.localRotation);
             skinGreen.SetActive(false);
             skinYellow.SetActive(false);
             skinRed.SetActive(true);
-            audioSlime.PlayOneShot(dieSound, 3f * seVol);
+            audioSlime.PlayOneShot(dieSound, 8f * seVol);
             slimeAnimator.SetBool("isDead", true);
             gameObject.GetComponent<CharacterController>().enabled = false;
             audioExtraSlime.Stop();
@@ -59,7 +61,9 @@ public class SlimeCollision : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit) {
         if(hit.gameObject.CompareTag("Kill")){
-            GameManager.instance.lvlKilledSlimes++;
+            if(GameManager.instance != null){
+                GameManager.instance.lvlKilledSlimes++;
+            }
             gameObject.GetComponent<CharacterController>().enabled = false;
             foreach(Transform child in gameObject.transform){
                 childAudio = child.gameObject.GetComponent<AudioSource>();
