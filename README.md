@@ -12,7 +12,6 @@ El objetivo principal del juego es entretenerse un rato, divirtiéndose con la a
 * Carga de Salto (Mantener "Barra Espaciadora")
 * Shift/Impulso (Apretar "Left Shift" + "W"/"A"/"S"/"D")
 * Caída (Apretar "Left Control")
-* Vista Panorámica (Mantener "Tab")
 * Recargar Nivel (Apretar "R")
 * Menú de Pausa (Apretar "ESC")
 								
@@ -22,7 +21,6 @@ El objetivo principal del juego es entretenerse un rato, divirtiéndose con la a
 * Bajar (Mantener "E")
 * Shift/Impulso (Apretar "Left Shift" + "W"/"A"/"S"/"D")
 * Caída (Apretar "Left Control")
-* Vista Panorámica (Mantener "Tab")
 * Recargar Nivel (Apretar "R")
 * Menú de Pausa (Apretar "ESC")
 
