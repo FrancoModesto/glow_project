@@ -1585,7 +1585,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7225550572461371987, guid: a5705f921731d3842abfc6bb8ff33696, type: 3}
       propertyPath: m_Name
-      value: -Wizard Group (1)
+      value: -WizardGroup (1)
       objectReference: {fileID: 0}
     - target: {fileID: 7225550572461371987, guid: a5705f921731d3842abfc6bb8ff33696, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -2310,7 +2310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1316008435420258769, guid: 50298ca1587476e4cbf7b447cdf72a69, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1316008435420258769, guid: 50298ca1587476e4cbf7b447cdf72a69, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2907,7 +2907,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7225550572461371987, guid: a5705f921731d3842abfc6bb8ff33696, type: 3}
       propertyPath: m_Name
-      value: -Wizard Group (0)
+      value: -WizardGroup (0)
       objectReference: {fileID: 0}
     - target: {fileID: 7225550572461371987, guid: a5705f921731d3842abfc6bb8ff33696, type: 3}
       propertyPath: m_StaticEditorFlags

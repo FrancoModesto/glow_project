@@ -157,6 +157,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(GameManager.instance != null){
             seVol = GameManager.instance.seVol;
+            audioPlayerExtra.volume = 0.35f * seVol;
         }
 
         if(GetComponent<PlayerCollision>().GetPChasBubble()){
@@ -164,8 +165,6 @@ public class PlayerMovement : MonoBehaviour
         } else{
             rbPlayer.useGravity = true;
         }
-        
-        audioPlayerExtra.volume = 0.35f * seVol;
 
          if(transform.position.y >= 15 && !GetComponent<PlayerCollision>().GetPCisDead()){
                 vCam0.SetActive(false);
@@ -261,6 +260,9 @@ public class PlayerMovement : MonoBehaviour
                 UI.GetComponent<UIManager>().GetUIMpauseMenu().SetActive(false);
                 UI.GetComponent<UIManager>().GetUIMoptionsInGameMenu().SetActive(false);
                 UI.GetComponent<UIManager>().GetUIMhudPanel().SetActive(true);
+                if(UI.GetComponent<UIManager>().GetUIMsubtitlesPanel() != null){
+                    UI.GetComponent<UIManager>().GetUIMsubtitlesPanel().SetActive(true);
+                }
                 Time.timeScale = 1;
                 foreach(AudioSource audio in audios){
                     if(audio != null && audio != audioPlayerExtra){
@@ -286,6 +288,9 @@ public class PlayerMovement : MonoBehaviour
                 Cursor.visible = true;
                 canPress = false;
                 UI.GetComponent<UIManager>().GetUIMhudPanel().SetActive(false);
+                if(UI.GetComponent<UIManager>().GetUIMsubtitlesPanel() != null){
+                    UI.GetComponent<UIManager>().GetUIMsubtitlesPanel().SetActive(false);
+                }
                 UI.GetComponent<UIManager>().GetUIMpauseMenu().SetActive(true);
                 Time.timeScale = 0;
                 foreach(AudioSource audio in audios){

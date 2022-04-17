@@ -45,6 +45,7 @@ public class SlimeMovement : MonoBehaviour
         originalRot = transform.rotation;
 
         audioSlime = GetComponent<AudioSource>();
+        audioExtraSlime.volume = 1f * seVol;
     }
 
     void Update()

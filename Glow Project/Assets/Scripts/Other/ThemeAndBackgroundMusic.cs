@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ThemeAndBackgroundMusic : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class ThemeAndBackgroundMusic : MonoBehaviour
     private AudioSource audioMusic;
     [SerializeField] private AudioClip retroSoundtrack;
     [SerializeField] private AudioClip rickLull;
+    [SerializeField] private AudioClip bossMusic;
     private int rand = 0;
     [SerializeField] private GameObject normalLights;
     [SerializeField] private GameObject purpleLights;
@@ -24,9 +26,14 @@ public class ThemeAndBackgroundMusic : MonoBehaviour
 
         audioMusic = GetComponent<AudioSource>();
         audioMusic.loop = true;
+
         rand = Random.Range(1,11);
+        if(SceneManager.GetActiveScene().name == "LevelBoss"){
+            rand = 11;
+        }
+        
         switch(rand){
-            case 4:
+            case 1:
                 audioMusic.clip = rickLull;
                 audioMusic.volume = 0.45f * musicVol;
                 audioMusic.Play();
@@ -34,6 +41,11 @@ public class ThemeAndBackgroundMusic : MonoBehaviour
                 purpleLights.SetActive(true);
                 normalCubeSkin.SetActive(false);
                 greyCubeSkin.SetActive(true);
+                break;
+            case 11:
+                audioMusic.clip = bossMusic;
+                audioMusic.volume = 1f * musicVol;
+                audioMusic.Play();
                 break;
             default:
                 audioMusic.clip = retroSoundtrack;
@@ -51,12 +63,13 @@ public class ThemeAndBackgroundMusic : MonoBehaviour
     {
         if(GameManager.instance != null){
             musicVol = GameManager.instance.musicVol;
-        }
-        
-        if(rand == 4){
-            audioMusic.volume = 0.45f * musicVol;
-        } else{
-            audioMusic.volume = 0.3f * musicVol;
+            if(rand == 1){
+                audioMusic.volume = 0.45f * musicVol;
+            } else if(rand == 11){
+                audioMusic.volume = 1f * musicVol;
+            } else{
+                audioMusic.volume = 0.3f * musicVol;
+            }
         }
     }
 }

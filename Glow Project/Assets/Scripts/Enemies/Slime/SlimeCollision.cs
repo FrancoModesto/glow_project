@@ -19,7 +19,7 @@ public class SlimeCollision : MonoBehaviour
     [SerializeField] private GameObject skinRed;
     private float seVol = 1f;
 
-    //GETTER Y SETTER
+    //GETTER y SETTER
     public bool GetSCisDead(){
         return isDead;
     }

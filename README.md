@@ -50,3 +50,5 @@ El objetivo principal del juego es entretenerse un rato, divirtiéndose con la a
 * La plataforma del final del nivel es llamada "Winning Platform", y solo se podrá ganar chocando contra ella mientras su color es verde; lo cual únicamente se consigue activando uno o más botones determinados.
 
 * Los botones también cumplen otras funciones, como abrir puertas o desactivar lasers.
+
+*RECOMENDADO JUGAR CON LA MÚSICA Y EL SONIDO ACTIVADOS PARA UNA EXPERIENCIA MÁS INMERSIVA*

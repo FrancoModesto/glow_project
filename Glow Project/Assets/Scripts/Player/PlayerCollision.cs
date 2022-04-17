@@ -236,6 +236,7 @@ public class PlayerCollision : MonoBehaviour
             gameObject.GetComponent<PlayerMovement>().SetPMrbPlayerVelocity(Vector3.zero);
             gameObject.GetComponent<PlayerMovement>().SetPMrbPlayerGravity(false);
             gameObject.GetComponent<SphereCollider>().enabled = false;
+            Invoke("DelayedNextLvl", 5f);
         }
     }
 
@@ -367,5 +368,10 @@ public class PlayerCollision : MonoBehaviour
         } else{
             skinBubble.SetActive(false);
         }
+    }
+
+    private void DelayedNextLvl(){
+        GameManager.SaveActualLvl(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

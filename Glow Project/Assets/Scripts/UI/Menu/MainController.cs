@@ -78,12 +78,14 @@ public class MainController : MonoBehaviour
     public void MusicVolChange(){
         if(GameManager.instance != null){
             GameManager.instance.musicVol = sliderMusicVol.value;
+            GameManager.SaveMusicVol(GameManager.instance.musicVol);
         }
     }
 
     public void SEVolChange(){
         if(GameManager.instance != null){
             GameManager.instance.seVol = sliderSEVol.value;
+            GameManager.SaveSEVol(GameManager.instance.seVol);
         }
     }
 
@@ -94,6 +96,9 @@ public class MainController : MonoBehaviour
         Cursor.visible = false;
         UI.GetComponent<UIManager>().GetUIMpauseMenu().SetActive(false);
         UI.GetComponent<UIManager>().GetUIMhudPanel().SetActive(true);
+        if(UI.GetComponent<UIManager>().GetUIMsubtitlesPanel() != null){
+            UI.GetComponent<UIManager>().GetUIMsubtitlesPanel().SetActive(true);
+        }
         Time.timeScale = 1;
         foreach(AudioSource audio in  player.GetComponent<PlayerMovement>().GetPMaudios()){
             if(audio != null && audio != player.GetComponent<PlayerMovement>().GetPMaudioPlayerExtra()){

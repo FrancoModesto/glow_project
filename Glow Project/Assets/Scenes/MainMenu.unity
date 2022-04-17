@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cdf42ea18c1d2b4eae056f85baba675, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cursor: {fileID: 2800000, guid: bb2467d0614c0614784c18a8b2cafb32, type: 3}
   actualLvl: 0
   lvlKilledSlimes: 0
   globalKilledSlimes: 0
