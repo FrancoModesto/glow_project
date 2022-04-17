@@ -28,6 +28,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject bubbleBoofImage;
     [SerializeField] private GameObject bubbleDurationText;
     [SerializeField] private GameObject subtitlesPanel;
+    [SerializeField] private GameObject blackScreenPanel;
     private GameObject player;
     private float timePassS = 0f;
     private float timePassF = 0f;
@@ -97,6 +98,10 @@ public class UIManager : MonoBehaviour
 
     public GameObject GetUIMsubtitlesPanel(){
         return subtitlesPanel;
+    }
+
+    public GameObject GetUIMblackScreenPanel(){
+        return blackScreenPanel;
     }
 
     public void SetUIMtimePassS(float value){

@@ -52,3 +52,4 @@ El objetivo principal del juego es entretenerse un rato, divirtiéndose con la a
 * Los botones también cumplen otras funciones, como abrir puertas o desactivar lasers.
 
 *RECOMENDADO JUGAR CON LA MÚSICA Y EL SONIDO ACTIVADOS PARA UNA EXPERIENCIA MÁS INMERSIVA*
+*(EXISTE MÁS DE 1 FINAL)*

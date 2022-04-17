@@ -33,10 +33,8 @@ public class SlimeBoss : MonoBehaviour
             audioSlimeBoss.volume = 1f * seVol;
         }
 
-        if(true){
-            LookAtPlayerLerp();
-            ActivateShield();
-        }
+        LookAtPlayerLerp();
+        ActivateShield();
     }
 
     private void LookAtPlayerLerp(){

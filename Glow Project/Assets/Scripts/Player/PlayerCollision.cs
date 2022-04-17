@@ -236,6 +236,7 @@ public class PlayerCollision : MonoBehaviour
             gameObject.GetComponent<PlayerMovement>().SetPMrbPlayerVelocity(Vector3.zero);
             gameObject.GetComponent<PlayerMovement>().SetPMrbPlayerGravity(false);
             gameObject.GetComponent<SphereCollider>().enabled = false;
+            Invoke("DelayedBlackScreen", 3f);
             Invoke("DelayedNextLvl", 5f);
         }
     }
@@ -370,8 +371,29 @@ public class PlayerCollision : MonoBehaviour
         }
     }
 
+    private void DelayedBlackScreen(){
+        UI.GetComponent<UIManager>().GetUIMblackScreenPanel().SetActive(true);
+        foreach(AudioSource audio in gameObject.GetComponent<PlayerMovement>().GetPMaudios()){
+            if(audio != null){
+                audio.Stop();
+            }
+        }
+    }
+
     private void DelayedNextLvl(){
-        GameManager.SaveActualLvl(SceneManager.GetActiveScene().buildIndex + 1);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if(GameManager.instance != null){
+            if(SceneManager.GetActiveScene().buildIndex + 1 == SceneManager.sceneCountInBuildSettings - 2){
+                if(GameManager.instance.globalKilledSlimes >= 1){
+                    GameManager.SaveActualLvl(SceneManager.GetActiveScene().buildIndex + 1);
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                } else{
+                    GameManager.SaveActualLvl(SceneManager.GetActiveScene().buildIndex + 2);
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+                }
+            } else{
+                GameManager.SaveActualLvl(SceneManager.GetActiveScene().buildIndex + 1);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+        }
     }
 }

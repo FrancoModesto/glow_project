@@ -152,7 +152,12 @@ public class LaserTurret : MonoBehaviour
 
     private void Respawn(){
         Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if(SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 2){
+            SceneManager.LoadScene(0);
+            Cursor.visible = true;
+        } else{
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     private void DelayedBatDestroy(){
