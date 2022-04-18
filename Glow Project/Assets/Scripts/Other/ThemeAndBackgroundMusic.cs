@@ -7,6 +7,7 @@ public class ThemeAndBackgroundMusic : MonoBehaviour
 {
     //RUNTIME
     private AudioSource audioMusic;
+    [SerializeField] private AudioClip tutorialMusic;
     [SerializeField] private AudioClip retroSoundtrack;
     [SerializeField] private AudioClip rickLull;
     [SerializeField] private AudioClip bossMusic;
@@ -29,6 +30,9 @@ public class ThemeAndBackgroundMusic : MonoBehaviour
         audioMusic.loop = true;
 
         rand = Random.Range(1,11);
+        if(SceneManager.GetActiveScene().name == "LevelTutorial"){
+            rand = 0;
+        }
         if(SceneManager.GetActiveScene().name == "LevelBoss"){
             rand = 11;
         } else if(SceneManager.GetActiveScene().name == "LevelBossGood"){
@@ -36,6 +40,11 @@ public class ThemeAndBackgroundMusic : MonoBehaviour
         }
         
         switch(rand){
+            case 0:
+                audioMusic.clip = tutorialMusic;
+                audioMusic.volume = 0.5f * musicVol;
+                audioMusic.Play();
+                break;
             case 1:
                 audioMusic.clip = rickLull;
                 audioMusic.volume = 0.45f * musicVol;
@@ -71,7 +80,9 @@ public class ThemeAndBackgroundMusic : MonoBehaviour
     {
         if(GameManager.instance != null){
             musicVol = GameManager.instance.musicVol;
-            if(rand == 1){
+            if(rand == 0){
+                audioMusic.volume = 0.5f * musicVol;
+            } else if(rand == 1){
                 audioMusic.volume = 0.45f * musicVol;
             } else if(rand == 11){
                 audioMusic.volume = 1f * musicVol;

@@ -28,6 +28,7 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField] private AudioClip pickArmorSound;
     [SerializeField] private AudioClip blockArmorSound;
     [SerializeField] private AudioClip pickBubbleSound;
+    [SerializeField] private AudioClip tpSound;
     [SerializeField] private GameObject skin;
     [SerializeField] private GameObject skinBright;
     [SerializeField] private GameObject skinShift;
@@ -50,6 +51,7 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField] private GameObject lavaSplashPrefab;
     [SerializeField] private GameObject batExplosionPrefab;
     [SerializeField] private GameObject wizardBulletHitPrefab;
+    [SerializeField] private GameObject tpVFXPrefab;
     private GameObject UI;
 
     //EVENTS
@@ -313,6 +315,12 @@ public class PlayerCollision : MonoBehaviour
                 skinBubble.SetActive(false);
                 Invoke("Respawn", 1f);
             }
+        }
+        if(other.gameObject.CompareTag("TP")){
+            audioPlayer.PlayOneShot(tpSound, 1f * seVol);
+            transform.position = other.gameObject.transform.GetChild(1).transform.position;
+            gameObject.GetComponent<PlayerMovement>().SetPMrbPlayerVelocity(Vector3.zero);
+            Instantiate(tpVFXPrefab, new Vector3(transform.position.x - 1, transform.position.y, transform.position.z), tpVFXPrefab.transform.localRotation);
         }
     }
 

@@ -59,7 +59,7 @@ Transform:
   m_GameObject: {fileID: 7225550572514940861}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 28, y: 32, z: 71}
+  m_LocalScale: {x: 28, y: 33, z: 71}
   m_Children: []
   m_Father: {fileID: 7225550572461371996}
   m_RootOrder: 0
@@ -90,9 +90,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wizardAnimator: {fileID: 7283768095042414504}
-  isOnRange: 0
-  isOut: 1
-  isReallyDead: 0
 --- !u!1001 &7225550572638916198
 PrefabInstance:
   m_ObjectHideFlags: 0

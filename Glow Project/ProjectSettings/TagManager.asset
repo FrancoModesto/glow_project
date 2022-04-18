@@ -13,6 +13,7 @@ TagManager:
   - Metallic
   - FxTemporaire
   - Slime
+  - TP
   layers:
   - Default
   - TransparentFX

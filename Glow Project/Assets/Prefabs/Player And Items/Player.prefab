@@ -753,6 +753,7 @@ MonoBehaviour:
   pickArmorSound: {fileID: 8300000, guid: f3e2255b1ab691b459ec170d44d74d43, type: 3}
   blockArmorSound: {fileID: 8300000, guid: 322bdaf1b3b6041479a5b30f8a7b4bd1, type: 3}
   pickBubbleSound: {fileID: 8300000, guid: b36cda091afc1154b90468d8ae5a64ae, type: 3}
+  tpSound: {fileID: 8300000, guid: 2d6ea85e8e900134db37a10fd42ba034, type: 3}
   skin: {fileID: 4294477731430879037}
   skinBright: {fileID: 1423967749290515699}
   skinShift: {fileID: 4946907925261958747}
@@ -764,6 +765,7 @@ MonoBehaviour:
   lavaSplashPrefab: {fileID: 1687118924408352, guid: 77c69ec12208c4c4380d15e30b6f8f68, type: 3}
   batExplosionPrefab: {fileID: 3647486945243506347, guid: 1e679729b92e8014d8d746cb23bfd217, type: 3}
   wizardBulletHitPrefab: {fileID: 100000, guid: 979632a27455af442bd2d8f36eb0ffce, type: 3}
+  tpVFXPrefab: {fileID: 100000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 3}
 --- !u!1001 &2323005402113316161
 PrefabInstance:
   m_ObjectHideFlags: 0
