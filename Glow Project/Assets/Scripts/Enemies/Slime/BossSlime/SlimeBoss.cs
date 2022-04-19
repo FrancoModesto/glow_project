@@ -9,30 +9,17 @@ public class SlimeBoss : MonoBehaviour
 
     //RUNTIME
     private GameObject player;
-    private AudioSource audioSlimeBoss;
     [SerializeField] private Animator slimeBossAnimator;
     [SerializeField] private GameObject shield;
-    private float seVol = 1f;
 
     //FUNCTIONS
     void Start()
     {
-        if(GameManager.instance != null){
-            seVol = GameManager.instance.seVol;
-        }
-
         player = GameObject.Find("Player");
-
-        audioSlimeBoss = GetComponent<AudioSource>();
     }
 
     void Update()
     {
-        if(GameManager.instance != null){
-            seVol = GameManager.instance.seVol;
-            audioSlimeBoss.volume = 1f * seVol;
-        }
-
         LookAtPlayerLerp();
         ActivateShield();
     }

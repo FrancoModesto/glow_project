@@ -554,9 +554,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 20
-  MaxDistance: 20.2
+  MaxDistance: 100
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -644,7 +644,6 @@ MonoBehaviour:
   shootCooldown: 2
   speedToLook: 1
   shootSound: {fileID: 8300000, guid: 58bd885b7fbf7674c807b5efdab935ae, type: 3}
-  wizardBulletHitPrefab: {fileID: 100000, guid: 979632a27455af442bd2d8f36eb0ffce, type: 3}
   bulletPrefab: {fileID: 2202068367740095580, guid: 9659e8fde4bc04445a9e00b154c69cf4, type: 3}
   bulletAcumulator: {fileID: 0}
   shootpoint: {fileID: 1969871262108415325}

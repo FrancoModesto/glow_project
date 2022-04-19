@@ -13,11 +13,12 @@ public class ThemeAndBackgroundMusic : MonoBehaviour
     [SerializeField] private AudioClip bossMusic;
     [SerializeField] private AudioClip goodBossMusic;
     private int rand = 0;
-    [SerializeField] private GameObject normalLights;
-    [SerializeField] private GameObject purpleLights;
-    [SerializeField] private GameObject normalCubeSkin;
-    [SerializeField] private GameObject greyCubeSkin;
     private float musicVol = 1f;
+
+    //GETTER y SETTER
+    public int GetTABMrand(){
+        return rand;
+    }
 
     //FUNCTIONS
     void Start()
@@ -49,10 +50,6 @@ public class ThemeAndBackgroundMusic : MonoBehaviour
                 audioMusic.clip = rickLull;
                 audioMusic.volume = 0.45f * musicVol;
                 audioMusic.Play();
-                normalLights.SetActive(false);
-                purpleLights.SetActive(true);
-                normalCubeSkin.SetActive(false);
-                greyCubeSkin.SetActive(true);
                 break;
             case 11:
                 audioMusic.clip = bossMusic;
@@ -68,10 +65,6 @@ public class ThemeAndBackgroundMusic : MonoBehaviour
                 audioMusic.clip = retroSoundtrack;
                 audioMusic.volume = 0.3f * musicVol;
                 audioMusic.Play();
-                purpleLights.SetActive(false);
-                normalLights.SetActive(true);
-                greyCubeSkin.SetActive(false);
-                normalCubeSkin.SetActive(true);
                 break;
         }
     }

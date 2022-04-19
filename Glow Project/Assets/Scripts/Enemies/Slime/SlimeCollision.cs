@@ -51,7 +51,7 @@ public class SlimeCollision : MonoBehaviour
             skinGreen.SetActive(false);
             skinYellow.SetActive(false);
             skinRed.SetActive(true);
-            audioSlime.PlayOneShot(dieSound, 8f * seVol);
+            audioSlime.PlayOneShot(dieSound, 2f * seVol);
             slimeAnimator.SetBool("isDead", true);
             gameObject.GetComponent<CharacterController>().enabled = false;
             audioExtraSlime.Stop();

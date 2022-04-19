@@ -55,8 +55,8 @@ public class WizardCollision : MonoBehaviour
                     rendStaff.material = redMaterial;
                     Invoke("RemoveRedMaterial", 0.5f);
                     Instantiate(wizardHitPrefab, new Vector3(transform.position.x - 2, transform.position.y + 4, transform.position.z), Quaternion.identity);
-                    audioWizard.PlayOneShot(knockedSound, 1.2f * seVol);
-                    audioWizard.PlayOneShot(dieSound, 1.3f * seVol);
+                    audioWizard.PlayOneShot(knockedSound, 0.6f * seVol);
+                    audioWizard.PlayOneShot(dieSound, 0.65f * seVol);
                     GetComponent<CapsuleCollider>().enabled = false;
                     Invoke("GetRidOfBody", 5f);
                 }
@@ -66,7 +66,7 @@ public class WizardCollision : MonoBehaviour
                     wizardAnimator.SetBool("isKnocked", true);
                     wizardAnimator.SetBool("isToAttack", false);
                     Instantiate(wizardHitPrefab, new Vector3(transform.position.x - 2, transform.position.y + 4, transform.position.z), Quaternion.identity);
-                    audioWizard.PlayOneShot(knockedSound, 1.2f * seVol);
+                    audioWizard.PlayOneShot(knockedSound, 0.6f * seVol);
                     Invoke("Unknock", unknockTime);
                 }
             }

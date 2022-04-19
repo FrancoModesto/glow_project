@@ -62,7 +62,7 @@ public class WizardMovement : MonoBehaviour
         }
         if(canShoot && wizardRange.GetComponent<WizardRange>().GetWRisOnRange() && !dead){
             wizardAnimator.SetBool("isToAttack", true);
-            Invoke("WizardShoot", 0.4f);
+            Invoke("WizardShoot", 0.2f);
             canShoot = false;
             Invoke("WizardCanShoot", shootCooldown);
         } else if(!canShoot){
@@ -82,7 +82,7 @@ public class WizardMovement : MonoBehaviour
     }
 
     private void WizardShoot(){
-        audioWizard.PlayOneShot(shootSound, 1.2f * seVol);
+        audioWizard.PlayOneShot(shootSound, 0.6f * seVol);
         GameObject newBullet = Instantiate(bulletPrefab, shootpoint.transform.position, shootpoint.transform.rotation);
         newBullet.transform.parent = bulletAcumulator.transform;
     }

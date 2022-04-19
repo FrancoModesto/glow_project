@@ -34,7 +34,7 @@ public class BatMovement : MonoBehaviour
         audioBat = GetComponent<AudioSource>();
         audioBat.loop = true;
         audioBat.clip = flySound;
-        audioBat.volume = 1f * seVol;
+        audioBat.volume = 0.5f * seVol;
         audioBat.Play();
     }
 
@@ -42,7 +42,7 @@ public class BatMovement : MonoBehaviour
     {
         if(GameManager.instance != null){
             seVol = GameManager.instance.seVol;
-            audioBat.volume = 1f * seVol;
+            audioBat.volume = 0.5f * seVol;
         }
 
         if(!player.GetComponent<PlayerCollision>().GetPCwin() && !player.GetComponent<PlayerCollision>().GetPCisDead()){

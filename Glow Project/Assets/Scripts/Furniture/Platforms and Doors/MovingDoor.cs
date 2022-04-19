@@ -20,14 +20,14 @@ public class MovingDoor : MovingPlatform
 
         audioDoor = GetComponent<AudioSource>();
         audioDoor.clip = movingDoorSound;
-        audioDoor.volume = 1f * seVol;
+        audioDoor.volume = 0.5f * seVol;
         audioDoor.loop = true;
     }
 
     void Update(){
         if(GameManager.instance != null){
             seVol = GameManager.instance.seVol;
-            audioDoor.volume = 1f * seVol;
+            audioDoor.volume = 0.5f * seVol;
         }
 
         if(buttonArray.Length != 0){

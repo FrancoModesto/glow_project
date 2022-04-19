@@ -74,7 +74,7 @@ public class SlimeMovement : MonoBehaviour
                 alertFirstTime = false;
                 noAlertFirstTime = true;
                 slimeAnimator.SetBool("alert", true);
-                audioSlime.PlayOneShot(alertSound, 5f * seVol);
+                audioSlime.PlayOneShot(alertSound, 2f * seVol);
                 slimeAnimator.SetBool("arrivedToPos", true);
                 skinGreen.SetActive(false);
                 skinYellow.SetActive(true);
@@ -100,7 +100,7 @@ public class SlimeMovement : MonoBehaviour
                 noAlertFirstTime = false;
                 if(!noAlertFirstTimeFix){
                     slimeAnimator.SetBool("alert", false);
-                    audioSlime.PlayOneShot(noAlertSound, 5f * seVol);
+                    audioSlime.PlayOneShot(noAlertSound, 2f * seVol);
                     skinYellow.SetActive(false);
                     skinGreen.SetActive(true);
                 }
