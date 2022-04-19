@@ -161,9 +161,6 @@ public class PlayerCollision : MonoBehaviour
             GetComponent<PlayerMovement>().SetPMcanJump(true);
         }
         if(other.gameObject.CompareTag("Kill")){
-            if(GameManager.instance != null){
-                GameManager.instance.lvlKilledSlimes = 0;
-            }
             GetComponent<PlayerMovement>().GetPMaudioPlayerExtra().Stop();
             OnDeath?.Invoke();
             isDead = true;
@@ -194,9 +191,6 @@ public class PlayerCollision : MonoBehaviour
                 Instantiate(batExplosionPrefab, other.gameObject.transform.position, Quaternion.identity);
                 Destroy(other.gameObject);
             } else{
-                if(GameManager.instance != null){
-                    GameManager.instance.lvlKilledSlimes = 0;
-                }
                 GetComponent<PlayerMovement>().GetPMaudioPlayerExtra().Stop();
                 OnDeath?.Invoke();
                 isDead = true;
@@ -223,11 +217,6 @@ public class PlayerCollision : MonoBehaviour
             }
         }
         if(other.gameObject.name == "WinningPlatform" && missionOk){
-            if(GameManager.instance != null){
-                GameManager.instance.globalKilledSlimes += GameManager.instance.lvlKilledSlimes;
-                GameManager.instance.lvlKilledSlimes = 0;
-                GameManager.SaveGlobalKilledSlimes(GameManager.instance.globalKilledSlimes);
-            }
             GetComponent<PlayerMovement>().GetPMaudioPlayerExtra().Stop();
             OnDeath?.Invoke();
             win = true;
@@ -289,9 +278,6 @@ public class PlayerCollision : MonoBehaviour
                 Instantiate(wizardBulletHitPrefab, new Vector3(transform.position.x - 1.5f, transform.position.y + 1, transform.position.z), Quaternion.identity);
                 audioPlayer.PlayOneShot(blockArmorSound, 1f * seVol);
             }else{
-                if(GameManager.instance != null){
-                    GameManager.instance.lvlKilledSlimes = 0;
-                }
                 GetComponent<PlayerMovement>().GetPMaudioPlayerExtra().Stop();
                 OnDeath?.Invoke();
                 isDead = true;
@@ -390,6 +376,9 @@ public class PlayerCollision : MonoBehaviour
 
     private void DelayedNextLvl(){
         if(GameManager.instance != null){
+            GameManager.instance.globalKilledSlimes += GameManager.instance.lvlKilledSlimes;
+            GameManager.SaveGlobalKilledSlimes(GameManager.instance.globalKilledSlimes);
+
             if(SceneManager.GetActiveScene().buildIndex + 1 == SceneManager.sceneCountInBuildSettings - 2){
                 if(GameManager.instance.globalKilledSlimes >= 1){
                     GameManager.SaveActualLvl(SceneManager.GetActiveScene().buildIndex + 1);

@@ -109,6 +109,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(GameManager.instance != null){
             seVol = GameManager.instance.seVol;
+            GameManager.instance.lvlKilledSlimes = 0;
         }
 
         UI = GameObject.Find("---UI---");
@@ -247,9 +248,6 @@ public class PlayerMovement : MonoBehaviour
                 Fall();
             }
             if(Input.GetKeyDown(KeyCode.R)){
-                if(GameManager.instance != null){
-                    GameManager.instance.lvlKilledSlimes = 0;
-                }
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }

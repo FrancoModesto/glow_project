@@ -78,9 +78,6 @@ public class LaserTurret : MonoBehaviour
             }
             if(hit.transform.gameObject.CompareTag("Player") && canKill){
                 if(!player.GetComponent<PlayerCollision>().GetPChasArmor()){
-                    if(GameManager.instance != null){
-                        GameManager.instance.lvlKilledSlimes = 0;
-                    }
                     KillPlayer();
                 }
             }
